@@ -89,14 +89,18 @@ mount_union () {
 
 ###############################################################################
 
-if pidof -o %PPID -x "$(basename "$0")"; then
+if pidof -o %PPID -s "$(basename "$0")"; then
 	echo "[ $(date $(printenv DATE_FORMAT)) ] Mount already in progress. Aborting."
 else
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Mount in progress. Starting."
+
 	mount_gdrive
 	if [ "$(printenv ENCRYPT_MEDIA)" != "0" ]; then
 		mount_local_media
 	fi
 	mount_union
+	
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Mount is done. Done."
 fi
 
 exit 0

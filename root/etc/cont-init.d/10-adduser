@@ -22,7 +22,6 @@ chmod -R 777 \
 chmod a+r /etc/fuse.conf
 
 mkdir -p config \
-    /usr/bin/* \
     $cloud_encrypt_dir \
     $cloud_decrypt_dir \
     $local_decrypt_dir \
