@@ -12,8 +12,7 @@ license="ISC"
 depends="libattr fuse"
 makedepends="autoconf automake libtool gettext-dev attr-dev fuse-dev linux-headers"
 subpackages="$pkgname-doc"
-source="$pkgname-$pkgver.tar.gz::https://github.com/trapexit/$pkgname/archive/$pkgver.tar.gz
-	makefile-no-debug.patch"
+source="$pkgname-$pkgver.tar.gz::https://github.com/trapexit/$pkgname/archive/$pkgver.tar.gz"
 builddir="$srcdir/$pkgname-$pkgver"
 
 prepare() {
