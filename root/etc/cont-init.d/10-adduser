@@ -22,7 +22,8 @@ mkdir -p $cloud_encrypt_dir \
 	
 chmod -R 777 \
 	/var/lock \
-    $log_dir
+    $log_dir \
+	/config
 
 chmod a+r /etc/fuse.conf
 
