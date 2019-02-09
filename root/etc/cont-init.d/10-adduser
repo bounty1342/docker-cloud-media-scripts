@@ -21,12 +21,6 @@ chmod -R 777 \
 
 chmod a+r /etc/fuse.conf
 
-mkdir -p config \
-    $cloud_encrypt_dir \
-    $cloud_decrypt_dir \
-    $local_decrypt_dir \
-    $local_media_dir
-
 chown -R abc:abc \
     /config \
     /usr/bin/* \

@@ -10,16 +10,18 @@ local_decrypt_dir="/local-decrypt"
 local_media_dir="/local-media"
 
 rclone_config="--config=/config/rclone.conf"
-rclone_options="${rclone_config} --buffer-size $(printenv BUFFER_SIZE) --checkers $(printenv CHECKERS)"
-rclone_mount_options="${rclone_options} --allow-non-empty --allow-other --max-read-ahead $(printenv MAX_READ_AHEAD) --uid ${_puid:-911} --gid ${_pgid:-911}"
+rclone_logs="--log-file=/logs/rclone-gdrive.log --log-level ERROR"
+rclone_options="${rclone_config} ${rclone_logs} --buffer-size $(printenv BUFFER_SIZE) --checkers $(printenv CHECKERS)"
+rclone_mount_options="${rclone_options} --allow-non-empty --allow-other --uid ${_puid:-911} --gid ${_pgid:-911} --umask 002 --size-only --timeout 1h --dir-cache-time 2m --vfs-cache-max-age 72h --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 5G --drive-chunk-size 32M"
+rclone_mount_options_w="${rclone_mount_options} --vfs-cache-mode writes"
 
 if [ "$(printenv READ_ONLY)" != "0" ]; then
     rclone_mount_options="${rclone_mount_options} --read-only"
 fi
 
-ufs_options="-o uid=${_puid:-911} -o gid=${_pgid:-911} -o cow,allow_other,direct_io,nonempty,auto_cache,sync_read"
+ufs_options="-o defaults,sync_read,allow_other,direct_io,use_ino,func.getattr=newest,nonempty,security_capability=false,xattr=nosys,category.create=ff,minfreespace=5G,umask=002,uid=${_puid:-911},gid=${_puid:-911},fsname=mergerfs"
 
-log_dir="/log"
+log_dir="/logs"
 if [ ! -d "${log_dir}" ]; then
 	mkdir -p "${log_dir}"
 fi
