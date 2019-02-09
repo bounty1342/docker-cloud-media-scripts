@@ -2,7 +2,7 @@
 . "/usr/bin/variables"
 
 check_rclone_cloud () {
-	if [[ ! "$(printenv RCLONE_CLOUD_ENDPOINT)" == *: ]]; then
+	if [[ ! "$(printenv RCLONE_CLOUD_ENDPOINT)" = *: ]]; then
 		printf "\n\n"
 		echo "Missing colon (:) in RCLONE_CLOUD_ENDPOINT ($(printenv RCLONE_CLOUD_ENDPOINT))"
 		echo "Run: docker exec -ti <DOCKER_CONTAINER> rclone_setup"
@@ -11,7 +11,7 @@ check_rclone_cloud () {
 		exit 02
 	fi
 
-	if [ "$(rclone listremotes $rclone_config | grep $(printenv RCLONE_CLOUD_ENDPOINT) | wc -l)" == "0" ]; then
+	if [ "$(rclone listremotes $rclone_config | grep $(printenv RCLONE_CLOUD_ENDPOINT) | wc -l)" = "0" ]; then
 		printf "\n\n"
 		echo "RCLONE_CLOUD_ENDPOINT ($(printenv RCLONE_CLOUD_ENDPOINT)) endpoint has not been created within rclone"
 		echo "Run: docker exec -ti <DOCKER_CONTAINER> rclone_setup"
@@ -23,7 +23,7 @@ check_rclone_cloud () {
 
 check_rclone_local () {
 	if [ "$(printenv ENCRYPT_MEDIA)" != "0" ]; then
-		if [[ ! "$(printenv RCLONE_LOCAL_ENDPOINT)" == *: ]]; then
+		if [[ ! "$(printenv RCLONE_LOCAL_ENDPOINT)" = *: ]]; then
 			printf "\n\n"
 			echo "Missing colon (:) in RCLONE_LOCAL_ENDPOINT ($(printenv RCLONE_LOCAL_ENDPOINT))"
 			echo "Run: docker exec -ti <DOCKER_CONTAINER> rclone_setup"
@@ -32,7 +32,7 @@ check_rclone_local () {
 			exit 02
 		fi
 
-		if [ "$(rclone listremotes $rclone_config | grep $(printenv RCLONE_LOCAL_ENDPOINT) | wc -l)" == "0" ]; then
+		if [ "$(rclone listremotes $rclone_config | grep $(printenv RCLONE_LOCAL_ENDPOINT) | wc -l)" = "0" ]; then
 			printf "\n\n"
 			echo "RCLONE_LOCAL_ENDPOINT ($(printenv RCLONE_LOCAL_ENDPOINT)) endpoint has not been created within rclone"
 			echo "Run: docker exec -ti <DOCKER_CONTAINER> rclone_setup"
