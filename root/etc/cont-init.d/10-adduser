@@ -15,6 +15,11 @@ User uid:    $(id -u abc)
 User gid:    $(id -g abc)
 -------------------------------------
 "
+mkdir -p $cloud_encrypt_dir \
+    $cloud_decrypt_dir \
+    $local_decrypt_dir \
+    $local_media_dir
+	
 chmod -R 777 \
 	/var/lock \
     $log_dir
