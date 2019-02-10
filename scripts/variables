@@ -10,9 +10,9 @@ local_decrypt_dir="/local-decrypt"
 local_media_dir="/local-media"
 
 rclone_config="--config=/config/rclone.conf"
-rclone_logs="--log-file=/logs/rclone-gdrive.log --log-level ERROR"
+rclone_logs="--log-file=/logs/rclone-gdrive.log --log-level DEBUG"
 rclone_options="${rclone_config} ${rclone_logs} --buffer-size $(printenv BUFFER_SIZE) --checkers $(printenv CHECKERS)"
-rclone_mount_options="${rclone_options} --allow-non-empty --allow-other --uid ${_puid:-911} --gid ${_pgid:-911} --umask 002 --size-only --timeout 1h --dir-cache-time 2m --vfs-cache-max-age 72h --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 5G --drive-chunk-size 32M"
+rclone_mount_options="${rclone_options} --allow-non-empty --allow-other --uid ${_puid:-911} --gid ${_pgid:-911} -vv --size-only --timeout 1h --dir-cache-time 2m --vfs-cache-max-age 72h --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 5G --drive-chunk-size 32M"
 rclone_mount_options_w="${rclone_mount_options} --vfs-cache-mode writes"
 
 if [ "$(printenv READ_ONLY)" != "0" ]; then
