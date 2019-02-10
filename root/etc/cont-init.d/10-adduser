@@ -18,7 +18,8 @@ User gid:    $(id -g abc)
 mkdir -p $cloud_encrypt_dir \
     $cloud_decrypt_dir \
     $local_decrypt_dir \
-    $local_media_dir
+    $local_media_dir \
+	$local_download_dir
 	
 chmod -R 777 \
 	/var/lock \
@@ -33,5 +34,6 @@ chown -R abc:abc \
     $cloud_encrypt_dir \
     $cloud_decrypt_dir \
     $local_decrypt_dir \
-    $local_media_dir
+    $local_media_dir \
+	$local_download_dir
 

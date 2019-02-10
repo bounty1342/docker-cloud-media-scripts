@@ -6,6 +6,7 @@ _pgid=$(printenv PGID)
 cloud_encrypt_dir="/cloud-encrypt"
 cloud_decrypt_dir="/cloud-decrypt"
 
+local_download_dir="/local-download"
 local_decrypt_dir="/local-decrypt"
 local_media_dir="/local-media"
 
