@@ -22,8 +22,8 @@ mount_gdrive () {
 	# Mount GD if not already mounted.
 	if [ $(ps -ef | grep "rclone" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir}"
-		echo 		rclone mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}" "${rclone_mount_options_w}" &
-		rclone mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}" "${rclone_mount_options_w}" &
+		echo rclone "$(rclone_options)" mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}" "${rclone_mount_options_w}" &
+		rclone "$(rclone_options)" mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}" "${rclone_mount_options_w}" &
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${cloud_dir} already mounted."
 	fi
@@ -46,8 +46,8 @@ mount_local_media () {
 
 	if [ $(ps -ef | grep "rclone" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting decrypted Google Drive: ${cloud_decrypt_dir}"
-		echo rclone mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}"  "${rclone_mount_options}" &
-		rclone mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}"  "${rclone_mount_options}" &
+		echo rclone "$(rclone_options)" mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}"  "${rclone_mount_options}" &
+		rclone "$(rclone_options)" mount "$(printenv RCLONE_LOCAL_ENDPOINT)" "${cloud_dir}"  "${rclone_mount_options}" &
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Decrypted mountpoint: ${cloud_decrypt_dir} already mounted."
 	fi
