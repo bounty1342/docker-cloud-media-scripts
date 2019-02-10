@@ -7,6 +7,7 @@
 # shellcheck source=config
 
 . "/usr/bin/config"
+. "/usr/bin/variables"
 ###############################################################################
 # FUNCTIONS
 ###############################################################################
@@ -14,8 +15,8 @@ mount_gdrive () {
 	# Mount GD if not already mounted.
 	if [ $(ps -ef | grep "rclone" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir}"
-		echo rclone "${rclone_options}" mount "$(printenv RCLONE_CLOUD_ENDPOINT)" "${cloud_encrypt_dir}" "${rclone_mount_options_w}"
-		rclone "${rclone_options}" mount "$(printenv RCLONE_CLOUD_ENDPOINT)" "${cloud_encrypt_dir}" "${rclone_mount_options_w}" &
+		echo rclone mount "$(printenv RCLONE_CLOUD_ENDPOINT)" "${cloud_encrypt_dir}" "${rclone_options}" "${rclone_mount_options_w}" &
+		rclone mount "$(printenv RCLONE_CLOUD_ENDPOINT)" "${cloud_encrypt_dir}" "${rclone_options}" "${rclone_mount_options_w}" &
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${cloud_dir} already mounted."
 	fi
