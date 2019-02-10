@@ -4,7 +4,6 @@
 all_good=1
 
 check_rclone_cloud
-check_rclone_local
 
 if [ $(ps -ef | grep "rclone" | grep -v "grep" | wc -l) == "0" ]; then
     printf "\n\nRclone is not running\n\n"
