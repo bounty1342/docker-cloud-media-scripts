@@ -1,0 +1,5 @@
+TODO
+Add HealCheck
+Tune rclone param
+Rewrite upload script
+Add IHM interface
