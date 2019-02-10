@@ -9,7 +9,7 @@ cloud_decrypt_dir="/cloud-decrypt"
 local_decrypt_dir="/local-decrypt"
 local_media_dir="/local-media"
 
-rclone_config="--config=\"/config/rclone.conf\""
+rclone_config="--config=/config/rclone.conf"
 rclone_logs="--log-file=/logs/rclone-gdrive.log --log-level DEBUG"
 rclone_options="${rclone_config} ${rclone_logs} --buffer-size $(printenv BUFFER_SIZE) --checkers $(printenv CHECKERS)"
 #rclone_mount_options="--allow-non-empty --allow-other --uid ${_puid:-911} --gid ${_pgid:-911} --umask 002 --size-only --dir-cache-time 2m --vfs-cache-max-age 72h --vfs-read-chunk-size 32M --vfs-read-chunk-size-limit 5G --drive-chunk-size 32M"
