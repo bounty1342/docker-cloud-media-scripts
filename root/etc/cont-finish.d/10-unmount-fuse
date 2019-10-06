@@ -1,5 +1,5 @@
-#!/usr/bin/with-contenv sh
-. "/usr/bin/variables"
+#!/bin/with-contenv sh
+. "/bin/variables"
 
 # unmount fuse
 fusermount -uz "${cloud_encrypt_dir}"
