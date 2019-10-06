@@ -3,7 +3,7 @@
 
 umask 022
 
-mount_command="mount"
+mount_command="mountRclone"
 
 echo "Executing ${mount_command}"
 exec $mount_command
