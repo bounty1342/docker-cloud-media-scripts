@@ -1,5 +1,5 @@
 #!/usr/bin/with-contenv sh
-. "/usr/bin/variables"
+. "/bin/variables"
 
 umask 022
 
