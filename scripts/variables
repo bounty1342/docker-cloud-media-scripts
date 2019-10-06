@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 _puid=$(printenv PUID)
 _pgid=$(printenv PGID)
