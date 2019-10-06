@@ -1,5 +1,5 @@
 #!/bin/bash
-. "/usr/bin/variables"
+. "/bin/variables"
 
 check_rclone_cloud () {
 	if [[ ! "$(printenv RCLONE_CLOUD_ENDPOINT)" = *: ]]; then
