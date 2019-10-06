@@ -1,0 +1,5 @@
+#!/bin/bash
+. "/usr/bin/variables"
+
+sleep 5
+mountRclone.script "$@" 2>&1 | tee "${log_dir}/mountRclone.log"
