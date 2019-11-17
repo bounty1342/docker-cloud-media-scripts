@@ -48,9 +48,9 @@ mount_union () {
 
 	# Mount plex media directory if not already mounted.
 	if [ $(ps -ef | grep "mergerfs" | grep -v "grep" | wc -l) = "0" ]; then
-		ufs_mounts="${local_decrypt_dir}=RW:${cloud_decrypt_dir}=RO"
+		ufs_mounts="${local_decrypt_dir}=RW:${cloud_decrypt_dir}=RW"
 
-		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting union: ${local_media_dir}"
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting mergerfs: $ufs_options "${ufs_mounts}" "${local_media_dir}"
 		mergerfs $ufs_options "${ufs_mounts}" "${local_media_dir}"
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Union mountpoint: ${local_media_dir} already mounted."
