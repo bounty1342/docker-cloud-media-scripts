@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/ash
+
 for arg; do
 	 if [ ! -f "$arg" ];then 
 		printf "File %s not found\n" "$arg";
