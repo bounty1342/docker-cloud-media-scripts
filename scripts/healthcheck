@@ -1,0 +1,8 @@
+#!/bin/sh
+for arg; do
+	 if [ ! -f "$arg" ];then 
+		printf "File %s not found\n" "$arg";
+		exit 1; 
+	fi 
+done 
+exit 0;
