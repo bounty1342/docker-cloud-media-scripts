@@ -26,4 +26,4 @@ fi
 
 rclone_cloud_endpoint=$(printenv RCLONE_CLOUD_ENDPOINT | tr -d '"' | tr -d "'")
 rclone_cloud_crypt_endpoint=$(printenv RCLONE_CLOUD_CRYPT_ENDPOINT | tr -d '"' | tr -d "'")
-rclone_bounty1342_endpoint=$(printenv RCLONE_CLOUD_BOUNTY1342_ENDPOINT | tr -d '"' | tr -d "'")
+rclone_bounty1342_endpoint=$(printenv RCLONE_BOUNTY1342_ENDPOINT | tr -d '"' | tr -d "'")
