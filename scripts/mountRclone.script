@@ -41,8 +41,8 @@ mount_gdrive () {
 	
 	# Mount GD Crypt if not already mounted.
 	if [ $(ps -ef | grep "${rclone_perso_endpoint}" | grep -v "grep" | wc -l) = "0" ] && [ "$(printenv ENCRYPT_MEDIA)" = "1" ]; then
-		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_decrypt_dir}"
-		echo rclone mount ${rclone_mount_options} ${rclone_perso_endpoint} ${cloud_decrypt_dir} 
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_perso_dir}"
+		echo rclone mount ${rclone_mount_options} ${rclone_perso_endpoint} ${cloud_perso_dir} 
 		rclone mount ${rclone_mount_options} ${rclone_perso_endpoint} ${cloud_perso_dir} &
 	else
 		if [ "$(printenv ENCRYPT_MEDIA)" = "1" ]; then
