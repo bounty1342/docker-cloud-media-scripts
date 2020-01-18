@@ -38,6 +38,17 @@ mount_gdrive () {
 				echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${cloud_decrypt_dir} already mounted."
 		fi
 	fi
+	
+	# Mount GD Crypt if not already mounted.
+	if [ $(ps -ef | grep "${rclone_perso_endpoint}" | grep -v "grep" | wc -l) = "0" ] && [ "$(printenv ENCRYPT_MEDIA)" = "1" ]; then
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_decrypt_dir}"
+		echo rclone mount ${rclone_mount_options} ${rclone_perso_endpoint} ${cloud_decrypt_dir} 
+		rclone mount ${rclone_mount_options} ${rclone_perso_endpoint} ${cloud_perso_dir} &
+	else
+		if [ "$(printenv ENCRYPT_MEDIA)" = "1" ]; then
+				echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${cloud_perso_dir} already mounted."
+		fi
+	fi
 }
 
 mount_union () {
@@ -58,7 +69,7 @@ mount_union () {
 	if [ $(ps -ef | grep "mergerfs" | grep -v "grep" | wc -l) = "0" ]; then
 		ufs_mounts="${local_decrypt_dir}=RW:${cloud_decrypt_dir}=RW"
 
-		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting mergerfs: $ufs_options ${ufs_mounts} ${local_media_dir}"
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting mergerfs: mergerfs $ufs_options ${ufs_mounts} ${local_media_dir}"
 		mergerfs $ufs_options "${ufs_mounts}" "${local_media_dir}"
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Union mountpoint: ${local_media_dir} already mounted."
