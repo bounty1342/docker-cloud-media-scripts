@@ -6,6 +6,7 @@ _pgid=$(printenv PGID)
 cloud_encrypt_dir="/cloud-encrypt"
 cloud_decrypt_dir="/cloud-decrypt"
 cloud_bounty1342_dir="/cloud-bounty1342"
+cloud_perso_dir="/cloud-perso"
 
 local_download_dir="/local-download"
 local_decrypt_dir="/local-decrypt"
@@ -27,3 +28,4 @@ fi
 rclone_cloud_endpoint=$(printenv RCLONE_CLOUD_ENDPOINT | tr -d '"' | tr -d "'")
 rclone_cloud_crypt_endpoint=$(printenv RCLONE_CLOUD_CRYPT_ENDPOINT | tr -d '"' | tr -d "'")
 rclone_bounty1342_endpoint=$(printenv RCLONE_BOUNTY1342_ENDPOINT | tr -d '"' | tr -d "'")
+rclone_perso_endpoint=$(printenv RCLONE_PERSO_ENDPOINT | tr -d '"' | tr -d "'")
