@@ -12,6 +12,30 @@
 # FUNCTIONS
 ###############################################################################
 mount_gdrive () {
+	# Mount PronVR if not already mounted.
+	if [ $(ps -ef | grep "${rclone_endpoint_1}" | grep -v "grep" | wc -l) = "0" ]; then
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir_1}"
+		echo rclone mount ${rclone_mount_options} ${rclone_endpoint_1} ${cloud_dir_1} 
+		rclone mount ${rclone_mount_options} ${rclone_endpoint_1} ${cloud_dir_1} &
+	else
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_endpoint_1} already mounted."
+	fi
+		# Mount PronVR if not already mounted.
+	if [ $(ps -ef | grep "${rclone_endpoint_2}" | grep -v "grep" | wc -l) = "0" ]; then
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir_2}"
+		echo rclone mount ${rclone_mount_options} ${rclone_endpoint_2} ${cloud_dir_2} 
+		rclone mount ${rclone_mount_options} ${rclone_endpoint_2} ${cloud_dir_2} &
+	else
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_endpoint_1} already mounted."
+	fi
+		# Mount PronVR if not already mounted.
+	if [ $(ps -ef | grep "${rclone_endpoint_3}" | grep -v "grep" | wc -l) = "0" ]; then
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir_3}"
+		echo rclone mount ${rclone_mount_options} ${rclone_endpoint_3} ${cloud_dir_3} 
+		rclone mount ${rclone_mount_options} ${rclone_endpoint_3} ${cloud_dir_3} &
+	else
+		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_endpoint_1} already mounted."
+	fi
 	# Mount GD if not already mounted.
 	if [ $(ps -ef | grep "${rclone_bounty1342_endpoint}" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_bounty1342_dir}"
