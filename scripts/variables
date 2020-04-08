@@ -7,6 +7,9 @@ cloud_encrypt_dir="/cloud-encrypt"
 cloud_decrypt_dir="/cloud-decrypt"
 cloud_bounty1342_dir="/cloud-bounty1342"
 cloud_perso_dir="/cloud-perso"
+cloud_dir_1="/cloud-dir-1"
+cloud_dir_2="/cloud-dir-2"
+cloud_dir_3="/cloud-dir-3"
 
 local_download_dir="/local-download"
 local_decrypt_dir="/local-decrypt"
@@ -29,3 +32,8 @@ rclone_cloud_endpoint=$(printenv RCLONE_CLOUD_ENDPOINT | tr -d '"' | tr -d "'")
 rclone_cloud_crypt_endpoint=$(printenv RCLONE_CLOUD_CRYPT_ENDPOINT | tr -d '"' | tr -d "'")
 rclone_bounty1342_endpoint=$(printenv RCLONE_BOUNTY1342_ENDPOINT | tr -d '"' | tr -d "'")
 rclone_perso_endpoint=$(printenv RCLONE_PERSO_ENDPOINT | tr -d '"' | tr -d "'")
+rclone_endpoint_1=$(printenv RCLONE_ENDPOINT_1 | tr -d '"' | tr -d "'")
+rclone_endpoint_2=$(printenv RCLONE_ENDPOINT_2 | tr -d '"' | tr -d "'")
+rclone_endpoint_3=$(printenv RCLONE_ENDPOINT_3 | tr -d '"' | tr -d "'")
+
+
