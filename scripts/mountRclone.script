@@ -12,6 +12,7 @@
 # FUNCTIONS
 ###############################################################################
 mount_gdrive () {
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_endpoint_1}" to ${cloud_dir_1}
 	# Mount PronVR if not already mounted.
 	if [ $(ps -ef | grep "${rclone_endpoint_1}" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir_1}"
@@ -20,7 +21,8 @@ mount_gdrive () {
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_endpoint_1} already mounted."
 	fi
-		# Mount PronVR if not already mounted.
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_endpoint_2}" to ${cloud_dir_2}
+	# Mount PronVR if not already mounted.
 	if [ $(ps -ef | grep "${rclone_endpoint_2}" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir_2}"
 		echo rclone mount ${rclone_mount_options} ${rclone_endpoint_2} ${cloud_dir_2} 
@@ -28,6 +30,7 @@ mount_gdrive () {
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_endpoint_2} already mounted."
 	fi
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_endpoint_3}" to ${cloud_dir_3}
 		# Mount PronVR if not already mounted.
 	if [ $(ps -ef | grep "${rclone_endpoint_3}" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_dir_3}"
@@ -36,6 +39,7 @@ mount_gdrive () {
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_endpoint_3} already mounted."
 	fi
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_bounty1342_endpoint}" to ${cloud_bounty1342_dir}
 	# Mount GD if not already mounted.
 	if [ $(ps -ef | grep "${rclone_bounty1342_endpoint}" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_bounty1342_dir}"
@@ -44,6 +48,7 @@ mount_gdrive () {
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${cloud_bounty1342_dir} already mounted."
 	fi
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_cloud_endpoint}" to ${cloud_encrypt_dir}
 	# Mount GD if not already mounted.
 	if [ $(ps -ef | grep "${rclone_cloud_endpoint}" | grep -v "grep" | wc -l) = "0" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_encrypt_dir}"
@@ -52,6 +57,7 @@ mount_gdrive () {
 	else
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${rclone_bounty1342_endpoint} already mounted."
 	fi
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_cloud_crypt_endpoint}" to ${cloud_decrypt_dir}
 	# Mount GD Crypt if not already mounted.
 	if [ $(ps -ef | grep "${rclone_cloud_crypt_endpoint}" | grep -v "grep" | wc -l) = "0" ] && [ "$(printenv ENCRYPT_MEDIA)" = "1" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_decrypt_dir}"
@@ -62,7 +68,8 @@ mount_gdrive () {
 				echo "[ $(date $(printenv DATE_FORMAT)) ] Google Drive mountpoint: ${cloud_decrypt_dir} already mounted."
 		fi
 	fi
-	
+
+	echo "[ $(date $(printenv DATE_FORMAT)) ] Start Google Drive : ${rclone_perso_endpoint}" to ${cloud_perso_dir}
 	# Mount GD Crypt if not already mounted.
 	if [ $(ps -ef | grep "${rclone_perso_endpoint}" | grep -v "grep" | wc -l) = "0" ] && [ "$(printenv ENCRYPT_MEDIA)" = "1" ]; then
 		echo "[ $(date $(printenv DATE_FORMAT)) ] Mounting Google Drive mountpoint: ${cloud_perso_dir}"
